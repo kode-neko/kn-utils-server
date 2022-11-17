@@ -29,6 +29,6 @@ function postMail(req, res) {
     });
 }
 const email = Router();
-email.post('/contact', postMail);
+email.post('/', postMail);
 export default email;
 //# sourceMappingURL=index.js.map
