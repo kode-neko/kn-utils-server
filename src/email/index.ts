@@ -35,6 +35,6 @@ function postMail(req: Request, res: Response) {
 }
 
 const email = Router();
-email.post('/contact', postMail);
+email.post('/', postMail);
 
 export default email;
