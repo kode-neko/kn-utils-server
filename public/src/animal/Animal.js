@@ -4,6 +4,11 @@ var Species;
     Species["DOG"] = "dog";
     Species["COW"] = "cow";
 })(Species || (Species = {}));
+var Sex;
+(function (Sex) {
+    Sex["MALE"] = "male";
+    Sex["FEMALE"] = "female";
+})(Sex || (Sex = {}));
 var ColorFur;
 (function (ColorFur) {
     ColorFur["BLACK"] = "black";
@@ -33,7 +38,7 @@ var SizeFur;
 (function (SizeFur) {
     SizeFur["NONE"] = "none";
     SizeFur["SHORT"] = "short";
-    SizeFur["LARGE"] = "large";
+    SizeFur["LONG"] = "long";
 })(SizeFur || (SizeFur = {}));
-export { Species, ColorFur, ColorEyes, Size, SizeFur, };
+export { Species, Sex, ColorFur, ColorEyes, Size, SizeFur, };
 //# sourceMappingURL=Animal.js.map

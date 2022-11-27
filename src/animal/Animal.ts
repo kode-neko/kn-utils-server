@@ -4,6 +4,11 @@ enum Species {
   COW = 'cow',
 }
 
+enum Sex {
+  MALE = 'male',
+  FEMALE = 'female',
+}
+
 enum ColorFur {
   BLACK = 'black',
   WHITE = 'white',
@@ -32,13 +37,14 @@ enum Size {
 enum SizeFur {
   NONE = 'none',
   SHORT = 'short',
-  LARGE = 'large',
+  LONG = 'long',
 }
 
 interface Animal {
   id: string;
   name: string;
   bday: Date;
+  sex: Sex;
   desc: string;
   breed: string;
   color: ColorFur[];
@@ -50,6 +56,7 @@ interface Animal {
 
 export {
   Species,
+  Sex,
   ColorFur,
   ColorEyes,
   Size,
