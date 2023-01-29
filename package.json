@@ -1,16 +1,16 @@
 {
-  "name": "kn-utils-server",
+  "name": "utils-server",
   "version": "0.0.0",
   "description": "It's a node-express app for several porpouses. At the moment only for a e-mail server",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "npm install && npm run build && npm run prod",
-    "start:fast": "npm run build && npm run prod",
+    "start": "npm run build && npm run prod",
+    "docker": "docker compose up --detach",
     "build": "tsc --project tsconfig.json",
     "build:dev": "tsc --watch --project tsconfig.json",
-    "prod": "node ./public/src -m prod",
-    "dev": "nodemon ./public/src -m dev",
+    "prod": "node ./public -m prod",
+    "dev": "nodemon ./public -m dev",
     "test": "jest"
   },
   "repository": "git+https://github.com/kode-neko/kn-utils-server.git",
