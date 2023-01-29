@@ -4,6 +4,9 @@ import express from 'express';
 import figlet from 'figlet';
 import pino from 'express-pino-logger';
 import console from './utils/console.js';
+import email from './email/index.js';
+import animal from './animal/index.js';
+import { createAnimalList } from './animal/Factory.js';
 
 dotenv.config();
 
@@ -17,6 +20,11 @@ console.log(
   ),
 );
 
+createAnimalList();
+
 const app = express();
-app.use(pino.default());
+app.use(express.json());
+// app.use(pino.default());
+app.use('/contact', email);
+app.use('/animal', animal);
 app.listen(process.env.SERVER_PORT);
