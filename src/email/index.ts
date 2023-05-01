@@ -18,18 +18,18 @@ function postMail(req: Request, res: Response) {
 
   const mailOpts = {
     from: mail,
-    to: 'ladysun.freedom@gmail.com',
+    to: env.MAIL_REDIRECT,
     subject: name,
     text: content,
   };
 
   smtpTrans.sendMail(mailOpts)
-    .then((resMail) => {
-      console.log('RESMAIL:', resMail);
+    .then(() => {
+      console.log('✉️  Email recieved!!!');
       res.status(200).json({ msg: 'OK' });
     })
     .catch((err) => {
-      console.log('ERR:', err);
+      console.error('🔥  Error:', err);
       res.status(500).json({ msg: 'KO' });
     });
 }
