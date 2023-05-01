@@ -1,0 +1,13 @@
+version: "3"
+services:
+  node:
+    image: "node:latest"
+    user: "node"
+    working_dir: ./
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/d/docker/volumes/utils-server
+    expose:
+      - "3001"
+    command: "npm start"
