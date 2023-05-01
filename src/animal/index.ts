@@ -1,21 +1,21 @@
 import { Request, Response, Router } from 'express';
 import shortid from 'shortid';
-import { Animal } from './Animal.js';
-import { animalList } from './Factory.js';
+import { animalList } from './Factory';
+import { Animal } from './Animal';
 
-function postAnimal(req: Request, res: Response) {
-  const animal = req.body;
+function postAnimal(req: Request, res: Response): void {
+  const animal: Animal = req.body;
   animal.id = shortid.generate();
   animalList.unshift(animal);
   res.status(200).json(animal);
 }
 
-function putAnimal(req: Request, res: Response) {
-  const animal = req.body;
-  const finded = animalList.find((a) => a.id === animal.id);
+function putAnimal(req: Request, res: Response): void {
+  const animal: Animal = req.body;
+  const finded: Animal = animalList.find((a) => a.id === animal.id);
   if (finded) {
-    const modified = { ...finded, ...animal };
-    const index = animalList.findIndex((a) => a.id === animal.id);
+    const modified: Animal = { ...finded, ...animal };
+    const index: number = animalList.findIndex((a) => a.id === animal.id);
     animalList[index] = modified;
     res.status(200).json(modified);
   } else {
@@ -23,11 +23,11 @@ function putAnimal(req: Request, res: Response) {
   }
 }
 
-function deleteAnimal(req: Request, res: Response) {
+function deleteAnimal(req: Request, res: Response): void {
   const { id } = req.params;
-  const found = animalList.find((a) => a.id === id);
+  const found: Animal  = animalList.find((a) => a.id === id);
   if (found) {
-    const index = animalList.findIndex((a) => a.id === id);
+    const index: number = animalList.findIndex((a) => a.id === id);
     animalList.splice(index, 1);
     res.status(200).json(found);
   } else {
@@ -35,9 +35,9 @@ function deleteAnimal(req: Request, res: Response) {
   }
 }
 
-function getAnimalById(req: Request, res: Response) {
+function getAnimalById(req: Request, res: Response): void {
   const { id } = req.params;
-  const found = animalList.find((a) => a.id === id);
+  const found: Animal = animalList.find((a) => a.id === id);
   if (found) {
     res.status(200).json(found);
   } else {
@@ -45,20 +45,20 @@ function getAnimalById(req: Request, res: Response) {
   }
 }
 
-function getAnimalAll(req: Request, res: Response) {
+function getAnimalAll(req: Request, res: Response): void {
   res.status(200).json(animalList);
 }
 
-function getAnimalList(req: Request, res: Response) {
+function getAnimalList(req: Request, res: Response): void {
   const { offset, limit, search } = req.body;
-  const regex = new RegExp(search.toLowerCase());
-  const animalSearch = animalList.filter((animal) => regex.test(animal.name.toLowerCase()));
-  const end = offset + limit < animalSearch.length ? offset + limit : animalSearch.length;
-  const slice = animalSearch.slice(offset, end);
+  const regex: RegExp = new RegExp(search.toLowerCase());
+  const animalSearch: Animal[] = animalList.filter((animal: Animal) => regex.test(animal.name.toLowerCase()));
+  const end: number = offset + limit < animalSearch.length ? offset + limit : animalSearch.length;
+  const slice: Animal[] = animalSearch.slice(offset, end);
   res.status(200).json(slice);
 }
 
-const animal = Router();
+const animal: Router = Router();
 animal.post('/', postAnimal);
 animal.put('/', putAnimal);
 animal.delete('/:id', deleteAnimal);

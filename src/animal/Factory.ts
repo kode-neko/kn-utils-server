@@ -1,17 +1,15 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable import/no-mutable-exports */
 import { faker } from '@faker-js/faker';
 import shortid from 'shortid';
-import randomNum from '../utils/randomNum.js';
+import randomNum from '../utils/randomNum';
 import {
   Animal, ColorEyes, ColorFur, Sex, Size, SizeFur, Species,
-} from './Animal.js';
+} from './Animal';
 
 const animalList: Animal[] = [];
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
 function getBreedBySpecies(species: Species): string {
-  let breed;
+  let breed: string;
 
   switch (String(species)) {
     case Species.CAT:
@@ -30,8 +28,8 @@ function getBreedBySpecies(species: Species): string {
 }
 
 function createAnimalList(): void {
-  for (let i = 0; i < 10; i++) {
-    const species = Object.values(Species)[randomNum(0, 2)] as Species;
+  for (let i: number = 0; i < 10; i++) {
+    const species: Species = Object.values(Species)[randomNum(0, 2)] as Species;
     const animal: Animal = {
       id: shortid.generate(),
       name: faker.name.firstName(),
