@@ -1,40 +1,41 @@
-import { Request, Response, Router } from 'express';
-import nodemailer from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
+import { Request, Response, Router } from 'express';
+import nodemailer, { Transporter } from 'nodemailer';
 import { env } from 'process';
-import console from '../utils/console.js';
+import Mail from 'nodemailer/lib/mailer/index';
 
-function postMail(req: Request, res: Response) {
+function postMail(req: Request, res: Response): void {
   const { name, mail, content } = req.body;
 
-  const smtpTrans = nodemailer.createTransport({
+  const optionsSMTP: SMTPTransport.Options = {
     host: env.MAIL_SERVER,
-    port: env.MAIL_PORT,
+    port: Number(env.MAIL_PORT),
     auth: {
       user: env.MAIL_USER,
       pass: env.MAIL_PASS,
     },
-  } as SMTPTransport.Options);
+  };
+  const smtpTrans: Transporter = nodemailer.createTransport(optionsSMTP);
 
-  const mailOpts = {
+  const mailOpts: Mail.Options = {
     from: mail,
-    to: 'ladysun.freedom@gmail.com',
+    to: env.MAIL_REDIRECT,
     subject: name,
     text: content,
   };
 
   smtpTrans.sendMail(mailOpts)
-    .then((resMail) => {
-      console.log('RESMAIL:', resMail);
+    .then(() => {
+      console.log('✉️  Email recieved!!!');
       res.status(200).json({ msg: 'OK' });
     })
-    .catch((err) => {
-      console.log('ERR:', err);
+    .catch((err: Error) => {
+      console.error('🔥  Error:', err);
       res.status(500).json({ msg: 'KO' });
     });
 }
 
-const email = Router();
+const email: Router = Router();
 email.post('/', postMail);
 
 export default email;
