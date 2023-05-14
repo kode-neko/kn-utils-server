@@ -1,13 +1,13 @@
 version: "3"
 services:
-  node:
-    image: "node:latest"
+  kn-utils-server:
+    image: "node"
     user: "node"
-    working_dir: ./
+    working_dir: /home/node/app
     environment:
       - NODE_ENV=production
     volumes:
-      - ./:/d/docker/volumes/utils-server
+      - ./:/home/node/app
     expose:
       - "3001"
-    command: "npm start"
+    command: "npm run start:dist"
