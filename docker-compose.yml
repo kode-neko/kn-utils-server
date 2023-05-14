@@ -8,6 +8,6 @@ services:
       - NODE_ENV=production
     volumes:
       - ./:/home/node/app
-    expose:
-      - "3001"
+    ports:
+      - 3002:3001
     command: "npm run start:dist"
