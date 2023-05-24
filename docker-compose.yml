@@ -1,7 +1,7 @@
 version: "3"
 services:
   kn-utils-server:
-    image: "node"
+    image: "node:latest"
     user: "node"
     working_dir: /home/node/app
     environment:
@@ -9,7 +9,7 @@ services:
     volumes:
       - ./:/home/node/app
     ports:
-      - 3002:3001
+      - 3002:3002
     command: "npm run start:dist"
 networks:
   kn-net:
