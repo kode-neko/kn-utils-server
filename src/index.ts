@@ -12,7 +12,8 @@ import { mdLog } from './middleware';
 dotenv.config();
 
 const {
-  SERVER_PORT
+  HOST_MAIN,
+  HOST_LOCAL
 } = process.env;
 
 createAnimalList();
@@ -23,7 +24,7 @@ const app: Express = express();
 app.use(mdLog);
 app.use(express.json());
 app.use(helmet());
-app.use(cors());
+app.use(cors({origin: [HOST_MAIN, HOST_LOCAL]}));
 const limiter: RateLimitRequestHandler = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
