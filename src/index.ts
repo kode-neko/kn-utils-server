@@ -7,6 +7,7 @@ import console from './utils/console';
 import email from './email/index';
 import animal from './animal/index';
 import { createAnimalList } from './animal/Factory';
+import { mdLog } from './middleware';
 
 dotenv.config();
 
@@ -19,9 +20,10 @@ createAnimalList();
 const app: Express = express();
 
 // Config
+app.use(mdLog);
 app.use(express.json());
 app.use(helmet());
-app.use(cors({origin: ["http://www.kodeneko.com", "https://www.kodeneko.com", `localhost:${SERVER_PORT}`]}));
+app.use(cors());
 const limiter: RateLimitRequestHandler = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
