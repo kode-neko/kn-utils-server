@@ -4,6 +4,7 @@ import json from "@eslint/json";
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sortKeys from 'eslint-plugin-sort-keys';
 import eslintTs from 'typescript-eslint';
+import globals from 'globals';
 
 export default [
   ...eslintTs.configs.recommended,
@@ -13,6 +14,9 @@ export default [
     plugins: {
       'simple-import-sort': simpleImportSort,
       'sort-keys': sortKeys
+    },
+    languageOptions: {
+      globals: { ...globals.node }
     },
     rules: {
       ...eslintJs.configs.recommended.rules,
