@@ -1,10 +1,4 @@
 {
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorCustomizations": {
-      "titleBar.activeForeground": "#ffffff",
-      "titleBar.inactiveForeground": "#ffffff",
-      "titleBar.activeBackground": "#0f9494",
-      "titleBar.inactiveBackground": "#0f9494",
-      "statusBar.background": "#0f9494",
-  },
+
 }

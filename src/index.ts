@@ -1,8 +1,5 @@
-// import chalk from 'chalk';
 import dotenv from 'dotenv';
 import express, {Express} from 'express';
-// import figlet from 'figlet';
-// import pino from 'express-pino-logger';
 import helmet from 'helmet';
 import cors from 'cors';
 import { rateLimit, RateLimitRequestHandler } from 'express-rate-limit';
@@ -12,18 +9,6 @@ import animal from './animal/index';
 import { createAnimalList } from './animal/Factory';
 
 dotenv.config();
-
-/*
-console.log(
-  chalk.bold.magentaBright(
-    figlet.textSync('Utils Server', {
-      font: 'Cosmike',
-      horizontalLayout: 'default',
-      verticalLayout: 'default',
-    }),
-  ),
-);
-*/
 
 createAnimalList();
 
@@ -42,7 +27,6 @@ const limiter: RateLimitRequestHandler = rateLimit({
 
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
-// app.use(pino.default());
 
 // routes
 app.use('/contact', email);
