@@ -11,7 +11,7 @@
     "skipLibCheck": true, // No revisa los type defs de las librerías importadas. Mejora mucho el rendimiento.
     // "strict": true, // Más "nazi" cuando chequea la sintaxis
     "forceConsistentCasingInFileNames": true, // Win no es case-sensitive en nombres de ficheros. Con esta opción fuerzas a que tsc lo sea
-    "moduleResolution": "node", // Estrategia para resolver modulos
+    "moduleResolution": "nodenext", // Estrategia para resolver modulos
     "target": "ESNext", // Version ES
     "module": "NodeNext", // Que sistema de módulos usará el código escrito
     "resolveJsonModule": true, // Poder importar .json
@@ -19,13 +19,12 @@
     "noEmit": false, // Hay casos que no interesa que compile. Solo usarlo paar typechecking o que lo haga un transpialdor como babel o swc
     // "jsx": "react", // Como traducir los jsx
     "esModuleInterop": true, // Permitir importar CommonJs
-    "sourceMap": true,
+    "sourceMap": true
   },
   "include": [ // A que ficheros se aplica la config. Muy útil para ESLint y transpialdores
-    "./src/**/*.ts",
-    "./src/**/*.test.ts"
+    "./src/**/*.ts"
   ],
   "exclude": [ // Dentro de los ficheros que se aplican, cuales no hacerlo
-    "src/**/*.test.ts"
+    "./src/**/*.test.ts"
   ]
 }

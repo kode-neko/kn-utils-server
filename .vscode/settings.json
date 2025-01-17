@@ -1,4 +1,7 @@
 {
+  "eslint.experimental.useFlatConfig": true,
   "workbench.iconTheme": "material-icon-theme",
-
+  "eslint.options": {
+    "overrideConfigFile": "./.eslintrc.mjs",
+  }
 }

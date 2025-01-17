@@ -1,31 +1,15 @@
 import eslintJs from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
-import jsonc from 'eslint-plugin-jsonc';
+import json from "@eslint/json";
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sortKeys from 'eslint-plugin-sort-keys';
-import parserJsonc from 'jsonc-eslint-parser';
 import eslintTs from 'typescript-eslint';
 
 export default [
-
-  // Json - Jsonc - Json5
-  {
-    files: ['**/*.{json,jsonc}'],
-    languageOptions: { parser: parserJsonc },
-    plugins: { jsonc },
-    rules: {
-      ...jsonc.configs['flat/all'].rules,
-      'jsonc/indent': [
-        'error',
-        2,
-        {}
-      ]
-    }
-  },
-
+  ...eslintTs.configs.recommended,
   // Javascript & Typescript
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{js,ts}'],
     plugins: {
       'simple-import-sort': simpleImportSort,
       'sort-keys': sortKeys
@@ -43,7 +27,7 @@ export default [
 
   // Stylistic
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{js,ts}'],
     plugins: { '@stylistic': stylistic },
     rules: {
       ...stylistic.configs['all-flat'].rules,
@@ -71,4 +55,17 @@ export default [
       '@stylistic/quotes': ['error', 'single']
     }
   },
+  // lint JSON files
+  {
+    plugins: {
+      json,
+    },
+  },
+  {
+    files: ["**/*.json"],
+    language: "json/json",
+    rules: {
+      "json/no-duplicate-keys": "error",
+    },
+  }
 ];
