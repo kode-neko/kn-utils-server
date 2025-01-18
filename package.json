@@ -4,17 +4,12 @@
   "description": "It's a node-express app for several porpouses. At the moment only for a e-mail server",
   "main": "build/index.js",
   "scripts": {
-    "start:dist": "node ./dist/bundle.js",
-    "start:lib": "node ./lib/index.js",
-    "start:dist:dev": "node ./dist/bundle.js --watch",
-    "start:lib:dev": "node ./lib/index.js --watch",
-    "server": "webpack serve --config ./webpack.config.dev.js",
-    "build:lib": "npm run clean:lib && tsc --project ./tsconfig.json",
-    "build:dist": "npm run clean:dist && webpack --config ./webpack.config.js",
-    "build:dist:dev": "tsc --watch --project ./tsconfig.json",
-    "docker:compose": "docker compose up --detach",
+    "start": "dotenvx run -f ./.env -- node ./lib/index.js",
+    "dev": "dotenvx run -f ./.env -- node ./lib/index.js --watch",
+    "build": "npm run clean:lib && tsc --project ./tsconfig.json",
+    "build:dev": "tsc --watch --project ./tsconfig.json",
+    "docker": "docker compose up --detach",
     "clean": "npm run clean:dist && npm run clean:lib",
-    "clean:dist": "rm -rf ./dist",
     "clean:lib": "rm -rf ./lib",
     "test": "jest"
   },
@@ -30,12 +25,14 @@
   },
   "homepage": "https://github.com/kode-neko/kn-utils-server#readme",
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.33.0",
     "@faker-js/faker": "^7.6.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",
     "helmet": "^6.1.5",
+    "mailgun": "^0.5.0",
+    "nodemailer": "^6.9.16",
     "shortid": "^2.2.8"
   },
   "devDependencies": {

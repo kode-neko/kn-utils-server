@@ -35,6 +35,10 @@ export default [
     plugins: { '@stylistic': stylistic },
     rules: {
       ...stylistic.configs['all-flat'].rules,
+      '@stylistic/multiline-ternary': ['error', "consistent"],
+      '@stylistic/array-element-newline': ['error', "consistent"],
+      '@stylistic/function-call-argument-newline': ["error", "consistent"],
+      '@stylistic/padded-blocks': ["error", "never"],
       '@stylistic/array-bracket-spacing': ['error', 'always'],
       '@stylistic/array-element-newline': ['error', { minItems: 3 }],
       '@stylistic/comma-spacing': [
