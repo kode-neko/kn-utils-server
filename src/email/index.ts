@@ -1,41 +1,46 @@
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { Request, Response, Router } from 'express';
-import nodemailer, { Transporter } from 'nodemailer';
-import { env } from 'process';
-import Mail from 'nodemailer/lib/mailer/index';
+import nodemailer from 'nodemailer';
 
 function postMail(req: Request, res: Response): void {
+  const {
+    MAIL_PASS,
+    MAIL_USER,
+    MAIL_TO
+  } = process.env;
+  
   const { name, mail, content } = req.body;
 
-  const optionsSMTP: SMTPTransport.Options = {
-    host: env.MAIL_SERVER,
-    port: Number(env.MAIL_PORT),
+  const transporter = nodemailer.createTransport({
     auth: {
-      user: env.MAIL_USER,
-      pass: env.MAIL_PASS,
+      pass: MAIL_PASS,
+      user: MAIL_USER
     },
-  };
-  const smtpTrans: Transporter = nodemailer.createTransport(optionsSMTP);
+    service: 'gmail'
+  });
 
-  const mailOpts: Mail.Options = {
+  const mailOptions = {
     from: mail,
-    to: env.MAIL_REDIRECT,
-    subject: name,
+    subject: `Contact Kodeneko | ${name}`,
     text: content,
+    to: [MAIL_TO, MAIL_USER]
   };
 
-  smtpTrans.sendMail(mailOpts)
-    .then(() => {
-      console.log('✉️  Email recieved!!!');
-      res.status(200).json({ msg: 'OK' });
-    })
-    .catch((err: Error) => {
-      console.error('🔥  Error:', err);
-      res.status(500).json({ msg: 'KO' });
-    });
+  transporter.sendMail(
+    mailOptions,
+    (error) => {
+      const [code, msg, log] = error ?
+        [500, 'There was an error', error] :
+        [200, 'This is fine', 'The mail was sent :)'];
+      console.log(log);
+      return res.status(code).send(msg);
+    }
+  );
 }
 
 const email: Router = Router();
-email.post('/', postMail);
+email.post(
+  '/',
+  postMail
+);
 
 export default email;

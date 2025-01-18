@@ -5,7 +5,6 @@
     "declaration": true, // Crear los type defs (d.ts)
     "lib": [ // Incluir los d.ts de librerías core
       "ESNext" // Todas las funcs de la ultima versión de ES
-      ""
     ],
     "allowJs": true, // Poder importar .js dentro de .ts y .tsx
     "allowSyntheticDefaultImports": true, // Poder hacer 'import React from "react"'
@@ -20,7 +19,8 @@
     "noEmit": false, // Hay casos que no interesa que compile. Solo usarlo paar typechecking o que lo haga un transpialdor como babel o swc
     // "jsx": "react", // Como traducir los jsx
     "esModuleInterop": true, // Permitir importar CommonJs
-    "sourceMap": true
+    "sourceMap": true,
+    "noImplicitAny": false
   },
   "include": [ // A que ficheros se aplica la config. Muy útil para ESLint y transpialdores
     "./src/**/*.ts"
