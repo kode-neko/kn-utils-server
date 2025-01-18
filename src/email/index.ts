@@ -2,6 +2,9 @@ import { Request, Response, Router } from 'express';
 import nodemailer from 'nodemailer';
 
 function postMail(req: Request, res: Response): void {
+
+  console.log
+
   const {
     MAIL_PASS,
     MAIL_USER,
@@ -31,7 +34,6 @@ function postMail(req: Request, res: Response): void {
       const [code, msg, log] = error ?
         [500, 'There was an error', error] :
         [200, 'This is fine', 'The mail was sent :)'];
-      console.log(log);
       return res.status(code).send(msg);
     }
   );
