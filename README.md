@@ -1,25 +1,49 @@
-<p align="center">
-  <img width="200" class="logo" src="./src/assets/logo.svg" />
-</p>
+# KN utils Server
 
-[💃 Personal Page](https://www.kodeneko.com) | [🐱 Github](https://github.com/kode-neko) | [🐤 Twitter](https://twitter.com/KodenekoFront) | [⚡ StackBlitz](https://stackblitz.com/@kode-neko) | [🧊 Codepen](https://codepen.io/kodeneko) | [🎨 Figma](https://www.figma.com/@kodeneko) | [✉️ Contact Mail](mailto:ladysun.freedom@gmail.com)
+An small node project with several small porpouses. At the oment ofefr a back and a mail service.
 
-This backend has some services for my personal front-end projects. This project may vary along the time, so it will change the next time you visit it
+---
+- [KN utils Server](#kn-utils-server)
+  - [🗒️ 1. Description](#️-1-description)
+  - [🛠️ 2. Technologies](#️-2-technologies)
+  - [🖥️ 3. Deploy](#️-3-deploy)
+  - [🤝 4. Contribution](#-4-contribution)
 
-# 📑 Services
-- **🐱 Animal API:** To obtain a colletion of objects. Consist on an animal records (cats, dogs and cows ).
-- **✉️ Contact API:** An endpoint to send messages thrugh a contact form.
+---
 
-# 🔗 Links
+## 🗒️ 1. Description
 
-These projects uses this test back-end:
+This project is an API with two functionalities: 
 
-- [🏠 Personal Page](https://www.kodeneko.com)
-- [🛍️ LionMiss Hub](https://www.kodeneko.com/lionmiss)
+- Animals: CRUD API rest to obtain an animal. This was concived for personal small projects, a quick REST for testing.
+- Mail: A mail service for my Personal Web Page.
 
-# ⚙️ Technologies
-- [🛍️ Node](https://vuejs.org/api/options-state.html)
-- [🐡 Express](https://vuejs.org/api/options-state.html)
-- [🌳 Mongo](https://pinia.vuejs.org/)
-- [☘️ Mongoose](https://pinia.vuejs.org/)
+## 🛠️ 2. Technologies
 
+Func ⚙️ | Tech 🛠️
+---|---
+Back | Node
+Server | Express
+Mail | Nodemailer
+Fake Data | Faker
+
+
+## 🖥️ 3. Deploy
+
+Dev Mode
+
+```bash
+npm run build:dev
+npm run start:dev
+```
+
+Production Mode
+
+```bash
+npm run build
+npm run start
+```
+
+## 🤝 4. Contribution
+
+If you want to suggest some improvement or inform about a bug, you are welcome 👍 Make an issue and we review it together ✨
