@@ -4,8 +4,8 @@
   "description": "It's a node-express app for several porpouses. At the moment only for a e-mail server",
   "main": "build/index.js",
   "scripts": {
-    "start": "node ./lib/index.js",
-    "dev": "node ./lib/index.js --watch",
+    "start": "dotenvx run -f ./.env -- node ./lib/index.js",
+    "dev": "dotenvx run -f ./.env -- node ./lib/index.js --watch",
     "build": "npm run clean:lib && tsc --project ./tsconfig.json",
     "build:dev": "tsc --watch --project ./tsconfig.json",
     "docker": "docker compose up --detach",
@@ -25,9 +25,9 @@
   },
   "homepage": "https://github.com/kode-neko/kn-utils-server#readme",
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.33.0",
     "@faker-js/faker": "^7.6.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",
     "helmet": "^6.1.5",
