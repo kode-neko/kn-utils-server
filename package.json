@@ -6,11 +6,10 @@
   "scripts": {
     "start": "dotenvx run -f ./.env -- node ./lib/index.js",
     "dev": "dotenvx run -f ./.env -- node ./lib/index.js --watch",
-    "build": "npm run clean:lib && tsc --project ./tsconfig.json",
+    "build": "npm run clean && tsc --project ./tsconfig.json",
     "build:dev": "tsc --watch --project ./tsconfig.json",
     "docker": "docker compose up --detach",
-    "clean": "npm run clean:dist && npm run clean:lib",
-    "clean:lib": "rm -rf ./lib",
+    "clean": "rm -rf ./lib",
     "test": "jest"
   },
   "repository": "git+https://github.com/kode-neko/kn-utils-server.git",
