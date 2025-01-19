@@ -4,13 +4,13 @@
   "description": "It's a node-express app for several porpouses. At the moment only for a e-mail server",
   "main": "build/index.js",
   "scripts": {
-    "start": "dotenvx run -f ./.env -- node ./lib/index.js",
-    "dev": "dotenvx run -f ./.env -- node ./lib/index.js --watch",
-    "build": "npm run clean:lib && tsc --project ./tsconfig.json",
+    "start": "dotenvx run -f ./.env -- node ./api/index.js",
+    "dev": "dotenvx run -f ./.env -- node ./api/index.js --watch",
+    "build": "npm run clean:api && tsc --project ./tsconfig.json",
     "build:dev": "tsc --watch --project ./tsconfig.json",
     "docker": "docker compose up --detach",
-    "clean": "npm run clean:dist && npm run clean:lib",
-    "clean:lib": "rm -rf ./lib",
+    "clean": "npm run clean:dist && npm run clean:api",
+    "clean:api": "rm -rf ./api",
     "test": "jest"
   },
   "repository": "git+https://github.com/kode-neko/kn-utils-server.git",
@@ -51,5 +51,6 @@
     "globals": "^15.14.0",
     "typescript": "^4.8.4",
     "typescript-eslint": "^8.20.0"
-  }
+  },
+  "packageManager": "yarn@3.4.1+sha256.b51208ae422260539b3503fe5b596f4f236947d69ed1f8797f9830331a38c841"
 }
