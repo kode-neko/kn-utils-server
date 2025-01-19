@@ -41,7 +41,7 @@ app.use(
 
 // init server
 app.listen(
-  process.env.SERVER_PORT,
+  Number(process.env.SERVER_PORT),
   () => {
     console.log(`\n 🚀  Server on port ${process.env.SERVER_PORT}`);
   }
