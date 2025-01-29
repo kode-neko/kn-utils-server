@@ -11,14 +11,7 @@
       "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
       "args": ["--runInBand"],
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "env": {
-        "DOTENV_KEY": "${workspaceFolder}/.env.test"  // Especifica el archivo de entorno
-      },
-      "runtimeArgs": [
-        "-r",
-        "dotenvx/config"
-      ]
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }

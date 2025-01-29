@@ -6,8 +6,7 @@
 import type { Config } from 'jest';
 import dotenvx from '@dotenvx/dotenvx'
 
-process.env.DOTENV_KEY = process.env.DOTENV_KEY || '.env.test'; 
-dotenvx.config({ path: process.env.DOTENV_KEY });
+dotenvx.config({ path: './.env.dev' })
 
 const config: Config = {
   // All imported modules in your tests should be mocked automatically
@@ -138,7 +137,7 @@ const config: Config = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  setupFiles: ["@dotenvx/dotenvx"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
