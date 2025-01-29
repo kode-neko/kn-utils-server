@@ -3,7 +3,11 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type {Config} from 'jest';
+import type { Config } from 'jest';
+import dotenvx from '@dotenvx/dotenvx'
+
+process.env.DOTENV_KEY = process.env.DOTENV_KEY || '.env.test'; 
+dotenvx.config({ path: process.env.DOTENV_KEY });
 
 const config: Config = {
   // All imported modules in your tests should be mocked automatically

@@ -1,5 +1,4 @@
 import cors from 'cors';
-import dotenv from 'dotenv';
 import express, { Express } from 'express';
 import { rateLimit, RateLimitRequestHandler } from 'express-rate-limit';
 import helmet from 'helmet';
@@ -7,9 +6,6 @@ import helmet from 'helmet';
 import { createAnimalList } from './animal/Factory';
 import animal from './animal/index';
 import email from './email/index';
-import console from './utils/console';
-
-dotenv.config();
 
 createAnimalList();
 

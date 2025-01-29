@@ -1,6 +1,5 @@
 import app from './app'
 
-// init server
 app.listen(
   Number(process.env.SERVER_PORT),
   () => {

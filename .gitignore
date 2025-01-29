@@ -2,5 +2,6 @@ lib
 api
 dist
 node_modules
-.env
+.env.dev
+.env.test
 .vercel
