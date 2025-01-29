@@ -5,12 +5,12 @@
   "main": "build/index.js",
   "scripts": {
     "start": "dotenvx run -f ./.env -- node ./lib/index.js",
-    "dev": "dotenvx run -f ./.env -- node ./lib/index.js --watch",
-    "build": "npm run clean:lib && tsc --project ./tsconfig.json",
+    "dev": "dotenvx run -f ./.env.dev -- node ./lib/index.js --watch",
+    "build": "npm run clean && tsc --project ./tsconfig.json",
     "build:dev": "tsc --watch --project ./tsconfig.json",
-    "docker": "docker compose up --detach",
-    "clean": "npm run clean:dist && npm run clean:lib",
-    "clean:lib": "rm -rf ./lib",
+    "docker": "docker compose --env-file ./.env up --detach",
+    "docker:dev": "docker compose --env-file ./.env.dev up --detach",
+    "clean": "rm -rf ./lib",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },

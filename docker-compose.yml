@@ -1,5 +1,5 @@
 services:
-  kn-utils-server:
+  utils-server:
     image: "node"
     user: "node"
     working_dir: /home/node/app
@@ -10,6 +10,3 @@ services:
     ports:
       - ${SERVER_PORT_HOST}:${SERVER_PORT}
     command: "npm run start"
-networks:
-  kn-net:
-    driver: bridge
