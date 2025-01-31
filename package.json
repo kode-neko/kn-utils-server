@@ -5,14 +5,6 @@
   "main": "build/index.js",
   "scripts": {
     "start": "dotenvx run -f ./.env -- node ./lib/index.js",
-<<<<<<< HEAD
-    "dev": "dotenvx run -f ./.env -- node ./lib/index.js --watch",
-    "build": "npm run clean && tsc --project ./tsconfig.json",
-    "build:dev": "tsc --watch --project ./tsconfig.json",
-    "docker": "docker compose up --detach",
-    "clean": "rm -rf ./lib",
-    "test": "jest"
-=======
     "dev": "dotenvx run -f ./.env.dev -- node ./lib/index.js --watch",
     "build": "npm run clean && tsc --project ./tsconfig.json",
     "build:dev": "tsc --watch --project ./tsconfig.json",
@@ -21,7 +13,6 @@
     "clean": "rm -rf ./lib",
     "test": "jest",
     "test:watch": "jest --watchAll"
->>>>>>> dev
   },
   "repository": "git+https://github.com/kode-neko/kn-utils-server.git",
   "keywords": [
