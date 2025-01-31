@@ -1,11 +1,7 @@
 services:
-<<<<<<< HEAD
-  kn-utils-server:
-    image: "node:latest"
-=======
+
   utils-server:
     image: "node"
->>>>>>> dev
     user: "node"
     working_dir: /home/node/app
     environment:
@@ -13,13 +9,6 @@ services:
     volumes:
       - ./:/home/node/app
     ports:
-<<<<<<< HEAD
-      - 3002:3002
-    command: "npm run start:dist"
-networks:
-  kn-net:
-    driver: bridge
-=======
       - ${SERVER_PORT_HOST}:${SERVER_PORT}
     command: "npm run start"
->>>>>>> dev
+
